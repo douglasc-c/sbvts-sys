@@ -50,7 +50,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes set to false
+     * The attributes defines the data type of the primary key
+     */
+    protected $keyType = 'string';
+
+    /**
+     * The attributes set a increments to false
      */
     public $incrementing = false;
 
