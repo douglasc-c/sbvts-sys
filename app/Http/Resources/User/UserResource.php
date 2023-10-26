@@ -13,7 +13,7 @@ class UserResource extends JsonResource
      *
      * @return array
      */
-    public static function delete($id)
+    public static function delete(string $id)
     {
         $user = User::find($id);
 
@@ -24,10 +24,9 @@ class UserResource extends JsonResource
 
     /**
      * Updating company data
-     * @param array $data
      * @return \App\Models\User
      */
-    public static function update(array $data, $id)
+    public static function update(array $data, string $id)
     {
         $user = User::find($id);
 
@@ -63,7 +62,6 @@ class UserResource extends JsonResource
     /**
      * Create a new company.
      *
-     * @param  array  $data
      * @return \App\Models\User
      */
     public static function create(array $data)
@@ -88,10 +86,9 @@ class UserResource extends JsonResource
     /**
      * Get the company information
      *
-     * @param string $id
      * @return \App\Models\User
      */
-    public static function get($id)
+    public static function get(string $id)
     {
         return User::find($id);
     }

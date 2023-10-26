@@ -25,7 +25,7 @@ class CreateUserRequest extends FormRequest
             'fullname' => 'required|string|max:255',
             'nickname' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:6',
             'type' => 'required|in:CPF,CNPJ',
             'document' => 'required|unique:users',
             // 'roles' => 'array',

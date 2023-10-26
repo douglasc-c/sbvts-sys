@@ -15,15 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Broadcast::routes(['middlleware' => ['auth:sanctum']]);
+Broadcast::routes(['middlleware' => ['auth:sanctum']]);
 
 # Sign in
 Route::post('signin', [App\Http\Controllers\Auth\AuthController::class, 'signin']);
 
 # Log out
-Route::post('logout', [App\Http\Controllers\Auth\AuthController::class, 'logout']);
+Route::get('logout', [App\Http\Controllers\Auth\AuthController::class, 'logout']);
 
+# Middleware Authentication
+Route::group(['middleware' => 'auth:sanctum'], function () {
 
+    # Users group
+    Route::group(['prefix' => 'users'], function () {
+        # get all users
+        Route::get('', [App\Http\Controllers\User\UserController::class, 'getAll']);
+    });
 
-// Route::group(['prefix' => ''], function(){
-// });
+    Route::group(['prefix' => 'user'], function () {
+        # Created user
+        Route::post('', [App\Http\Controllers\User\UserController::class, 'create']);
+
+        # get user
+        Route::get('/{id}', [App\Http\Controllers\User\UserController::class, 'get']);
+    });
+});

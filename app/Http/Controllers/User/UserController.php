@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Platform\User;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Delete a user
      *
@@ -82,6 +92,7 @@ class UserController extends Controller
             ], 400);
         }
     }
+
 
     /**
      * Get a user information
